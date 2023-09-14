@@ -1,0 +1,38 @@
+{
+  "name": "keen-nic-2",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@chartbrew/plugin-strapi": "^0.4.2",
+    "@notum-cz/strapi-plugin-content-versioning": "^0.4.10",
+    "@strapi/plugin-i18n": "4.12.5",
+    "@strapi/plugin-users-permissions": "4.12.5",
+    "@strapi/strapi": "4.12.5",
+    "dom-parser": "^0.1.6",
+    "jsdom": "^22.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0",
+    "node-dom": "^0.1.0",
+    "patch-package": "^8.0.0",
+    "yarn": "^1.22.19"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "9f7699da-8139-4f22-a156-510c9a101688"
+  },
+  "engines": {
+    "node": ">=16.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

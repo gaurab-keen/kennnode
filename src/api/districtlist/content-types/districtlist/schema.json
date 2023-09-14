@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "districtlists",
+  "info": {
+    "singularName": "districtlist",
+    "pluralName": "districtlists",
+    "displayName": "districtlist",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "versions": {
+      "versioned": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "state_id": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "type": "integer"
+    },
+    "dist_id": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "type": "integer"
+    },
+    "auther_name": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "type": "string",
+      "visible":false
+    },
+    "auther_email": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "type": "email",
+      "visible":false
+    },
+    "review_status": {
+      "type": "customField",
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        }
+      },
+      "customField": "plugin::test-plugin.test-plugin"
+    }
+  }
+}
