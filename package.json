@@ -11,8 +11,6 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@chartbrew/plugin-strapi": "^0.4.2",
-    "@notum-cz/strapi-plugin-content-versioning": "^0.4.10",
     "@strapi/plugin-i18n": "4.12.5",
     "@strapi/plugin-users-permissions": "4.12.5",
     "@strapi/strapi": "4.12.5",

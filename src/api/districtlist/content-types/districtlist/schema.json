@@ -4,69 +4,45 @@
   "info": {
     "singularName": "districtlist",
     "pluralName": "districtlists",
-    "displayName": "districtlist",
-    "description": ""
+    "displayName": "districtlist"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "versions": {
-      "versioned": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
-    "name": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
+      "name": {
+        
+        "type": "string",
+        "required": true
       },
-      "type": "string",
-      "required": true
-    },
-    "state_id": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
+      "state_id": {
+        
+        "type": "integer"
       },
-      "type": "integer"
-    },
-    "dist_id": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
+      "dist_id": {
+        
+        "type": "integer"
       },
-      "type": "integer"
-    },
-    "auther_name": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
+      "auther_name": {
+        
+        "type": "string",
+        "visible":false
+        
       },
-      "type": "string",
-      "visible":false
-    },
-    "auther_email": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
+      "auther_email": {
+        
+        "type": "email",
+        "visible":false
+        
       },
-      "type": "email",
-      "visible":false
-    },
-    "review_status": {
-      "type": "customField",
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
-      },
-      "customField": "plugin::test-plugin.test-plugin"
-    }
+      "review_status": {
+        "type": "customField",
+        
+        "customField": "plugin::test-plugin.test-plugin"
+      }
+
   }
+
+  
 }

@@ -41,11 +41,11 @@ export default {
       type: "string",
       intlLabel: {
       id: "test-plugin.label",
-      defaultMessage: "My Tags",
+      defaultMessage: "Review Tag",
       },
       intlDescription: {
       id: "test-plugin.description",
-      defaultMessage: "Selct your tabs",
+      defaultMessage: "Tab to create Review",
       },
       components: {
       Input: async() =>

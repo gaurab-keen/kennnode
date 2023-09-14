@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import {Stack,Box,Layout,TextInput,Typography,Button,SingleSelect,SingleSelectOption} from '@strapi/design-system'
 //import DistrictApiHandler from '../../api/districlist';
 import { useFetchClient }  from '@strapi/helper-plugin';
-import {statusText,messageText,colorText}from '../CommonFile/index'
+import {statusText,messageText,colorText,buttonText}from '../CommonFile/index'
 
 
 
@@ -29,7 +29,6 @@ const TestPlugin =  ({
   const {get}=useFetchClient()
  
   useEffect(()=>{
-    console.log("check value of Props10000 "+statusText.statusApproved)
      console.log("check value of Props1 "+value)
     if(value===undefined){
       //console.log("check value of Props1 "+value)
@@ -53,7 +52,7 @@ const TestPlugin =  ({
         setReviewColor(colorText.colorReject)  
        } else{
         setReview(messageText.textDraft)
-        setReviewColor(colorText.colorDreaft)  
+        setReviewColor(colorText.colorDraft)  
          
        }   
     }  
@@ -86,21 +85,24 @@ const TestPlugin =  ({
        // console.log("equalssssssff999999999 "+adminList.data.email)
     
           if(value1==statusText.statusDraft|| value1==statusText.statusReject){
-           // console.log("equalssssssff666  "+value1)
+           console.log("equalssssssff666  "+value1)
             setDoneButton(true)
             setRejectButton(false)
             setReviewButton(false)
           }else{
-            //console.log("equalssssssff777  "+value1)
+            console.log("equalssssssff777  "+value1)
             setDoneButton(true)
             setRejectButton(true)
             setReviewButton(false)
           }  
        }else{
-          if(value1==statusText.statusApproved){
+        console.log("equalssssssf8888  "+value1)
+          if(value1==statusText.statusApproved || value1==statusText.statusReview){
               setDoneButton(false)
               setRejectButton(false)
               setReviewButton(false)
+              setReview(messageText.textSend)
+              setReviewColor(colorText.colorSend)
             }else{
               setDoneButton(false)
               setRejectButton(false)
@@ -150,21 +152,26 @@ const TestPlugin =  ({
   return (
       <Box>
         <Layout >  
-     <Stack horizontal spacing={4} marginTop={20}>
+     <Stack horizontal spacing={4}>
         {doneButton ? 
-          <Button variant="default" onClick={handleDoneEvent}>Review Completed</Button> 
+          <Button 
+          variant="default" onClick={handleDoneEvent}>{buttonText.review}</Button> 
          :null}
          {rejectButton ?
-          <Button variant="default" onClick={handleRejectEvent}>Reject</Button>:null
+          <Button variant="default" onClick={handleRejectEvent}>{buttonText.reject}</Button>:null
          }
         {reviewButton ?
-          <Button variant="default" onClick={handleReviewedEvent}>Send for Review</Button>:null
+          <Button variant="default" onClick={handleReviewedEvent}>{buttonText.sendReview}</Button>:null
          }
           
-     </Stack>  
-         <Typography 
-         textColor={reviewcolor}
-         variant="Omega">{review}</Typography> 
+     </Stack> 
+      <div  style={{margin: "10px"}}>
+     <Typography 
+        
+        textColor={reviewcolor}
+        variant="Omega">{review}</Typography> 
+     </div>
+         
 
         {/* <TextInput
         disabled={false}
