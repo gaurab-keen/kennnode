@@ -2,8 +2,9 @@ import React from 'react';
 import { useEffect,useState} from 'react';
 import { useIntl } from 'react-intl';
 import {Stack,Box,Layout,TextInput,Typography,Button,SingleSelect,SingleSelectOption} from '@strapi/design-system'
-import DistrictApiHandler from '../../api/districlist';
+//import DistrictApiHandler from '../../api/districlist';
 import { useFetchClient }  from '@strapi/helper-plugin';
+import {statusText,messageText,colorText}from '../CommonFile/index'
 
 
 
@@ -28,30 +29,32 @@ const TestPlugin =  ({
   const {get}=useFetchClient()
  
   useEffect(()=>{
-    console.log("check value of Props10000 "+value)
+    console.log("check value of Props10000 "+statusText.statusApproved)
+     console.log("check value of Props1 "+value)
     if(value===undefined){
-      console.log("check value of Props1 "+value)
-      setReview('Data is in draft mode')
-      setReviewColor("primary600") 
-      setReviewStatus('draft')
+      //console.log("check value of Props1 "+value)
+      setReview(messageText.textDraft)
+      setReviewColor(colorText.colorDraft) 
+      setReviewStatus(statusText.statusDraft)
         //setReview('Data is in draft mode')
     } else{
       //console.log("check value of Props2 "+value)
       setReviewStatus(value)
-       if(value=='sent'){
-        setReview('Data has sent for review ')
-        setReviewColor("primary600")  
+       if(value==statusText.textReview){
+        setReview(messageText.textReview)
+        setReviewColor(colorText.colorReview) 
        }   
-       else if(value=='done'){
-        setReview('Data has checked by reviewer')
-        setReviewColor("primary600")  
+       else if(value==statusText.statusApproved){
+        setReview(messageText.textApproved)
+        setReviewColor(colorText.colorApproved)  
        } 
-       else if(value=='reject'){
-        setReview('Data has rejected by reviewer ,Please check again')
-        setReviewColor("primary600")  
+       else if(value==statusText.statusReject){
+        setReview(messageText.textReject)
+        setReviewColor(colorText.colorReject)  
        } else{
-        setReview('Data is in draft mode')
-        setReviewColor("primary600")  
+        setReview(messageText.textDraft)
+        setReviewColor(colorText.colorDreaft)  
+         
        }   
     }  
     
@@ -82,19 +85,19 @@ const TestPlugin =  ({
        if(adminList.data.email=='gaurab.kumar@fosteringlinux.com'){
        // console.log("equalssssssff999999999 "+adminList.data.email)
     
-          if(value1=='draft' || value1=='reject'){
-            console.log("equalssssssff666  "+value1)
+          if(value1==statusText.statusDraft|| value1==statusText.statusReject){
+           // console.log("equalssssssff666  "+value1)
             setDoneButton(true)
             setRejectButton(false)
             setReviewButton(false)
           }else{
-            console.log("equalssssssff777  "+value1)
+            //console.log("equalssssssff777  "+value1)
             setDoneButton(true)
             setRejectButton(true)
             setReviewButton(false)
           }  
        }else{
-          if(value1=='done'){
+          if(value1==statusText.statusApproved){
               setDoneButton(false)
               setRejectButton(false)
               setReviewButton(false)
@@ -109,25 +112,25 @@ const TestPlugin =  ({
   async function handleDoneEvent() {
    
    //  setReview("Reviewed, Ready for published");
-     setReviewStatus("done")
-     setReview('Data has checked by reviewer')
-     setReviewColor("sucess600") 
+     setReviewStatus(statusText.statusApproved)
+     setReview(messageText.textApproved)
+        setReviewColor(colorText.colorApproved) 
      //setReviewColor("sucess700")
   }
   
   async function handleRejectEvent() {
     //setReview("Rejected Please check again");
-    setReviewStatus("reject")
-    setReview('Data has rejected by reviewer, Please check again')
-    setReviewColor("danger600") 
+    setReviewStatus(statusText.statusReject)
+    setReview(messageText.textReject)
+    setReviewColor(colorText.colorReject) 
    // setReviewColor("denger700")
    
   }
   async function handleReviewedEvent() {
    // setReview("Sending for review to publisher");
-    setReviewStatus("sent")
-    setReview('Data has sent for review ')
-    setReviewColor("primary600") 
+   setReviewStatus(statusText.statusReview)
+    setReview(messageText.textReview)
+    setReviewColor(colorText.colorReview) 
      
   }
   function createProps(val)

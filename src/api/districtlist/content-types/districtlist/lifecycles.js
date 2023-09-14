@@ -1,5 +1,6 @@
-const { ForbiddenError,ValidationError,ApplicationError} = require("@strapi/utils").errors;
-const validText =require('../../../commonfiles/htmlvalidator')
+const { ForbiddenError,ValidationError,ApplicationErrorerr} = require("@strapi/utils").errors;
+const {validText} =require('../../../commonfiles/htmlvalidator')
+// import {statusText} from '../../../../plugins/test-plugin/admin/src/components/CommonFile/index'
 let isPublished=false;
 module.exports = {
     beforeCreate: async ({ params }) => {
@@ -34,9 +35,9 @@ module.exports = {
               where: { id: params.where.id }});
               
             if(isPublished){
-                 if(entries.review_status!='done'){
+                 if(entries.review_status!='Approved'){
                   isPublished=false
-                  throw new ValidationError("state id is not correct");
+                  throw strapi.errors.ApplicationError("My mesData is not approved");
                  } 
                  strapi.log.debug("Data is Published  Status "+JSON.stringify(entries.review_status))
             }  

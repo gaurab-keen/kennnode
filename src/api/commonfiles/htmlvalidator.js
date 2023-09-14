@@ -1,5 +1,5 @@
 
-const validText= ((html)=> { // checks the validity of html, requires all tags and property-names to only use alphabetical characters and numbers (and hyphens, underscore for properties)
+ const validText= ((html)=> { // checks the validity of html, requires all tags and property-names to only use alphabetical characters and numbers (and hyphens, underscore for properties)
     html = html.toLowerCase().replace(/(?<=<[^>]+?=\s*"[^"]*)[<>]/g,"").replace(/(?<=<[^>]+?=\s*'[^']*)[<>]/g,""); // remove all angle brackets from tag properties
     html = html.replace(/<script.*?<\/script>/g, '');  // Remove all script-elements
     html = html.replace(/<style.*?<\/style>/g, '');  // Remove all style elements tags
