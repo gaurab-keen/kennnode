@@ -27,7 +27,7 @@
       "auther_name": {
         
         "type": "string",
-        "visible":false
+        "visible":true
         
       },
       "auther_email": {

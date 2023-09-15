@@ -22,8 +22,6 @@ module.exports = {
           
      },
      beforeUpdate: async ({params})=>{
-     
-      
       strapi.log.debug("Data status  Status "+JSON.stringify(params))
       const entries = await strapi.db.query('api::districtlist.districtlist').findOne({ 
         where: { id: params.where.id }});   
