@@ -1,5 +1,7 @@
-//const { ForbiddenError,ValidationError,ApplicationErrorerr} = require("@strapi/utils").errors;
+const { errors } = require('@strapi/utils');
+const { ApplicationError } = errors;
 const {validText} =require('../../../commonfiles/htmlvalidator')
+
 // import {statusText} from '../../../../plugins/test-plugin/admin/src/components/CommonFile/index'
 let isPublished=false;
 module.exports = {
@@ -20,41 +22,94 @@ module.exports = {
           
      },
      beforeUpdate: async ({params})=>{
+     
       
-      
-          if (params.data.hasOwnProperty("publishedAt")) {
-           
-              isPublished=true
-              strapi.log.debug("Published data ")
-            return
-          }
-         
-          //strapi.log.debug("Data status  Status "+JSON.stringify(params))
-          if(params.data.hasOwnProperty("isVisibleInListView")){
-            const entries = await strapi.db.query('api::districtlist.districtlist').findOne({ 
-              where: { id: params.where.id }});
-              
-            if(isPublished){
+      strapi.log.debug("Data status  Status "+JSON.stringify(params))
+      const entries = await strapi.db.query('api::districtlist.districtlist').findOne({ 
+        where: { id: params.where.id }});   
+        if(entries==null)
+          return;
+
+        if (params.data.hasOwnProperty("publishedAt")) {
+           if(params.data.publishedAt!=null || params.data.publishedAt!=undefined){
                  if(entries.review_status!='Approved'){
-                  isPublished=false
-                  throw strapi.errors.ApplicationError("My mesData is not approved");
+                 // isPublished=false
+                 throw new ApplicationError('Collection data is not approved', { foo: 'bar' });
+                 // throw strapi.errors.ApplicationError("My Data is not approved");
+                  
                  } 
-                 strapi.log.debug("Data is Published  Status "+JSON.stringify(entries.review_status))
-            }  
-            else{
-              isPublished=false
-              strapi.log.debug("Data is Svaed Status "+JSON.stringify(entries.review_status))
-            }
+                 strapi.log.debug("Data is Published  Status  "+JSON.stringify(entries.review_status))
+            }  else{
+              strapi.log.debug("Data is unpublished  Status We will send Email to Reviewer")
+            }   
+        }
+        else{
+          // isPublished=false
+          // if(entries.review_status=="Draft"){
+          //   strapi.log.debug("No any step needed for this status"+JSON.stringify(entries.review_status))
+          // }
+          //  if(entries.review_status=="Rejected"){
+            
+          //   strapi.log.debug("Data is Svaed Status  and change status to reject to Under Review, We will send Email to Reviewer to check and approved"+JSON.stringify(entries.review_status))
+          // }
+        
+       if(entries.review_status=="Under Review"){
+      //   try{
+      //     await strapi.plugins['email'].services.email.send({
+      //       to: 'nitu.gupta@fosteringlinux.com',
+      //       from: 'gaurab.kumar@fosteringlinux.com' ,
+      //       cc: 'varad.gupta@fosteringlinux.com' ,
+      //       // bcc: 'valid email address',
+      //       // replyTo: 'valid email address',
+      //       subject: 'The Strapi Email plugin worked successfully',
+      //       text: `Data is send for review ${result.name} data is saved by user ${result.auther_email}` , // Replace with a valid field ID
+      //       // html: 'Hello world!', 
+              
+      //     })
+      // } catch(err) {
+      //     console.log(err);
+      // }
+          strapi.log.debug("Data is Svaed Status , We will send Email to Reviewer to check and approved"+JSON.stringify(entries.review_status))
+        }
+           
+
+
+         }
+      
+    //   if (params.data.hasOwnProperty("publishedAt")) {
+    
+           
+    //     isPublished=true
+    //     strapi.log.debug("Published data ")
+    //   return
+    // }
+         
+    //       //strapi.log.debug("Data status  Status "+JSON.stringify(params))
+    //       if(params.data.hasOwnProperty("isVisibleInListView")){
+            // const entries = await strapi.db.query('api::districtlist.districtlist').findOne({ 
+            //   where: { id: params.where.id }});
+              
+            // if(isPublished){
+            //      if(entries.review_status!='Approved'){
+            //       isPublished=false
+            //       throw strapi.errors.ApplicationError("My mesData is not approved");
+            //      } 
+            //      strapi.log.debug("Data is Published  Status "+JSON.stringify(entries.review_status))
+            // }  
+            // else{
+            //   isPublished=false
+            //   strapi.log.debug("Data is Svaed Status "+JSON.stringify(entries.review_status))
+            // }
                
             
-          }
+    //       }
          
-          isPublished=false
+    //       isPublished=false
  
-     },
-     beforeDelete: async ({params})=>{
+    //  },
+    //  beforeDelete: async ({params})=>{
      
-      strapi.log.debug("before Deleted  "+JSON.stringify(params));
+    //   strapi.log.debug("before Deleted  "+JSON.stringify(params));
      },
      afterCreate:async ({result})=>{
     //  strapi.log.debug("after Create 11111 "+JSON.stringify(result));
@@ -67,6 +122,24 @@ module.exports = {
                     }, 
         
       });
+      if(result.review_status="Under Review")
+      {
+      //   try{
+      //     await strapi.plugins['email'].services.email.send({
+      //       to: 'nitu.gupta@fosteringlinux.com ',
+      //       from: 'gaurab.kumar@fosteringlinux.com ', // e.g. single sender verification in SendGrid
+      //       cc: 'varad.gupta@fosteringlinux.com' ,
+      //       // bcc: 'valid email address',
+      //       // replyTo: 'valid email address',
+      //       subject: 'The Strapi Email plugin worked successfully',
+      //       text: `Data is send for review ${result.name} data is saved by user ${result.auther_email}` , // Replace with a valid field ID
+      //       // html: 'Hello world!', 
+              
+      //     })
+      // } catch(err) {
+      //     console.log(err);
+      // }
+      }
       
 
       ///await strapi.query('user', 'users-permissions').update({id: user_id}, {role: role_id});}

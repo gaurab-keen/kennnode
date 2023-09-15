@@ -7,6 +7,7 @@
  } 
  export const messageText={
     textApproved:"Data has been reviewed by reviewer",
+    textApproved1:"Please verify all data and approved for publishing",
     textReject:"Data has been rejected by reviewer",
     textDraft:"Data will be stored in draft mode",
     textReview:"Data will be send for review",

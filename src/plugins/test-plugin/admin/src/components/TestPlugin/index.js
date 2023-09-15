@@ -94,6 +94,8 @@ const TestPlugin =  ({
             setDoneButton(true)
             setRejectButton(true)
             setReviewButton(false)
+            setReview(messageText.textApproved1)
+            setReviewColor(colorText.colorSend)
           }  
        }else{
         console.log("equalssssssf8888  "+value1)
