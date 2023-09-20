@@ -11,9 +11,9 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.12.5",
-    "@strapi/plugin-users-permissions": "4.12.5",
-    "@strapi/strapi": "4.12.5",
+    "@strapi/plugin-i18n": "4.13.6",
+    "@strapi/plugin-users-permissions": "4.13.6",
+    "@strapi/strapi": "4.13.6",
     "dom-parser": "^0.1.6",
     "jsdom": "^22.1.0",
     "mysql": "^2.18.1",

@@ -3,8 +3,18 @@ module.exports = ({env}) => ({
     'test-plugin': {
         enabled: true,
         resolve: './src/plugins/test-plugin'
-      }
+      },
+      // 'nested-field': {
+      //   enabled: true,
+      //   resolve: './src/plugins/nested-field'
+      // },
       
+    
+      
+      // 'test-plugin1': {
+      //   enabled: true,
+      //   resolve: './src/plugins/test-plugin'
+      // } 
     //    email: {
        
     //     config: {

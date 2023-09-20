@@ -4,45 +4,39 @@
   "info": {
     "singularName": "districtlist",
     "pluralName": "districtlists",
-    "displayName": "districtlist"
+    "displayName": "districtlist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-      "name": {
-        
-        "type": "string",
-        "required": true
-      },
-      "state_id": {
-        
-        "type": "integer"
-      },
-      "dist_id": {
-        
-        "type": "integer"
-      },
-      "auther_name": {
-        
-        "type": "string",
-        "visible":true
-        
-      },
-      "auther_email": {
-        
-        "type": "email",
-        "visible":false
-        
-      },
-      "review_status": {
-        "type": "customField",
-        
-        "customField": "plugin::test-plugin.test-plugin"
-      }
-
+    "auther_email": {
+      "type": "email",
+      "visible": false
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "state_id": {
+      "type": "integer"
+    },
+    "dist_id": {
+      "type": "integer"
+    },
+    "auther_name": {
+      "type": "string",
+      "visible": true
+    },
+    "review_status": {
+      "type": "customField",
+      "customField": "plugin::test-plugin.test-plugin"
+    },
+    "state": {
+      "type": "customField",
+      "customField": "plugin::test-plugin.test-plugin1"
+    }
   }
-
-  
 }

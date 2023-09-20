@@ -35,27 +35,48 @@ export default {
       name,
     });
     
-    app.customFields.register({
-      name: "test-plugin",
-      pluginId: "test-plugin",
-      type: "string",
-      intlLabel: {
-      id: "test-plugin.label",
-      defaultMessage: "Review Tag",
-      },
-      intlDescription: {
-      id: "test-plugin.description",
-      defaultMessage: "Tab to create Review",
-      },
-      components: {
-      Input: async() =>
-      import ( /* webpackChunkName: "input-component" */ './components/TestPlugin'),
-      
-      },
-      options: {},
-      });
+    app.customFields.register(
+      {
+        name: "test-plugin",
+        pluginId: "test-plugin",
+        type: "string",
+        intlLabel: {
+        id: "test-plugin.label",
+        defaultMessage: "Review Tag",
+        },
+        intlDescription: {
+        id: "test-plugin.description",
+        defaultMessage: "Tab to create Review",
+        },
+        components: {
+        Input: async() =>
+        import ( /* webpackChunkName: "input-component" */ './components/TestPlugin'),
+        
+        },
+        options: {},
+        });  
+        app.customFields.register(
+          {
+            name: "test-plugin1",
+            pluginId: "test-plugin",
+            type: "string",
+            intlLabel: {
+            id: "test-plugin1.label",
+            defaultMessage: "NestedField",
+            },
+            intlDescription: {
+            id: "test-plugin1.description",
+            defaultMessage: "Tab to create NestedField",
+            },
+            components: {
+            Input: async() =>
+            import ( /* webpackChunkName: "input-component" */ './components/NewTest'),
+            
+            },
+            options: {},
+            });   
 
-    
+        
 
   },
 
